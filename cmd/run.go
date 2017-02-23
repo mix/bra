@@ -28,10 +28,9 @@ import (
 
 	"github.com/Unknwon/com"
 	"github.com/Unknwon/log"
+	"github.com/mix/bra/modules/setting"
 	"github.com/urfave/cli"
-	"gopkg.in/fsnotify.v1"
-
-	"github.com/Unknwon/bra/modules/setting"
+	fsnotify "gopkg.in/fsnotify.v1"
 )
 
 var (

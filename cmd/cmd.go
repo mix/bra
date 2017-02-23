@@ -17,12 +17,12 @@ import (
 	"github.com/Unknwon/log"
 	"github.com/urfave/cli"
 
-	"github.com/Unknwon/bra/modules/setting"
+	"github.com/mix/bra/modules/setting"
 )
 
 var AppVer string
 
 func setup(ctx *cli.Context) {
 	log.Info("App Version: %s", AppVer)
-	setting.InitSetting()
+	setting.InitSetting(ctx)
 }

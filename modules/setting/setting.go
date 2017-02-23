@@ -23,6 +23,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/Unknwon/com"
 	"github.com/Unknwon/log"
+	"github.com/urfave/cli"
 )
 
 func init() {
@@ -81,18 +82,21 @@ func IgnoreFile(file string) bool {
 	return false
 }
 
-func InitSetting() {
+func InitSetting(ctx *cli.Context) {
 	var err error
 	WorkDir, err = os.Getwd()
 	if err != nil {
 		log.Fatal("Fail to get work directory: %v", err)
 	}
-
 	confPath := path.Join(WorkDir, ".bra.toml")
+	if configFile := ctx.GlobalString("config"); configFile != "" {
+		confPath = path.Join(WorkDir, configFile)
+	}
+
 	if !com.IsFile(confPath) {
-		log.Fatal(".bra.toml not found in work directory")
+		log.Fatal("%s not found", confPath)
 	} else if _, err = toml.DecodeFile(confPath, &Cfg); err != nil {
-		log.Fatal("Fail to decode .bra.toml: %v", err)
+		log.Fatal("Fail to decode %s: %v", confPath, err)
 	}
 
 	if Cfg.Run.InterruptTimeout == 0 {

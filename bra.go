@@ -21,7 +21,7 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/Unknwon/bra/cmd"
+	"github.com/mix/bra/cmd"
 )
 
 const APP_VER = "0.4.2.0603"
@@ -41,6 +41,11 @@ func main() {
 		cmd.CmdRun,
 		cmd.CmdSync,
 	}
-	app.Flags = append(app.Flags, []cli.Flag{}...)
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "config, c",
+			Usage: "Load configuration from `FILE`",
+		},
+	}
 	app.Run(os.Args)
 }
