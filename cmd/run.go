@@ -30,7 +30,7 @@ import (
 	"github.com/Unknwon/log"
 	"github.com/mix/bra/modules/setting"
 	"github.com/urfave/cli"
-	fsnotify "gopkg.in/fsnotify.v1"
+	"gopkg.in/fsnotify/fsnotify.v1"
 )
 
 var (

@@ -27,7 +27,7 @@ import (
 	"github.com/urfave/cli"
 
 	"github.com/mix/bra/modules/setting"
-	fsnotify "gopkg.in/fsnotify.v1"
+	"gopkg.in/fsnotify/fsnotify.v1"
 )
 
 var CmdSync = cli.Command{
